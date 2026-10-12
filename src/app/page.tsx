@@ -9,7 +9,7 @@ import PracticeCard from "@/components/PracticeCard";
 import Reveal from "@/components/Reveal";
 import Testimonial from "@/components/Testimonial";
 import { posts } from "@/lib/blog";
-import { counties } from "@/lib/counties";
+import { counties, countyHref } from "@/lib/counties";
 import { practiceAreas, practiceHref } from "@/lib/practice-areas";
 import { legalServiceSchema, organizationSchema, pageMeta, websiteSchema } from "@/lib/seo";
 import { attorneyPortrait, firm, fullAddress } from "@/lib/site";
@@ -238,7 +238,7 @@ export default function Home() {
               {counties.map((c) => (
                 <li key={c.id}>
                   <Link
-                    href={`/service-areas/#${c.id}`}
+                    href={countyHref(c.id)}
                     className="inline-flex min-h-[44px] items-center rounded-full border border-navy/20 bg-white px-5 py-2 text-sm font-medium text-ink transition hover:border-gold hover:bg-navy hover:text-light"
                   >
                     {c.name}, {c.stateAbbr}

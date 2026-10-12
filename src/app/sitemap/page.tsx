@@ -1,7 +1,7 @@
 import Link from "next/link";
 import LegalPage from "@/components/LegalPage";
 import { posts } from "@/lib/blog";
-import { counties } from "@/lib/counties";
+import { counties, countyHref } from "@/lib/counties";
 import { practiceAreas, practiceHref } from "@/lib/practice-areas";
 import { pageMeta } from "@/lib/seo";
 
@@ -30,7 +30,7 @@ const groups: { title: string; links: { href: string; label: string }[] }[] = [
   },
   {
     title: "Service Areas",
-    links: [{ href: "/service-areas/", label: "All Service Areas" }, ...counties.map((c) => ({ href: `/service-areas/#${c.id}`, label: `${c.name}, ${c.stateAbbr}` }))],
+    links: [{ href: "/service-areas/", label: "All Service Areas" }, ...counties.map((c) => ({ href: countyHref(c.id), label: `${c.name}, ${c.stateAbbr}` }))],
   },
   {
     title: "Blog",

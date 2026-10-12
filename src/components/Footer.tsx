@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { firm, fullAddress } from "@/lib/site";
 import { practiceAreas, practiceHref } from "@/lib/practice-areas";
-import { counties } from "@/lib/counties";
+import { counties, countyHref } from "@/lib/counties";
 import { Wordmark } from "./Header";
 import Icon from "./Icon";
 import MapEmbed from "./MapEmbed";
@@ -67,7 +67,7 @@ export default function Footer() {
           <ul className="space-y-2.5">
             {counties.map((c) => (
               <li key={c.id}>
-                <Link href={`/service-areas/#${c.id}`} className={link}>{c.name}, {c.stateAbbr}</Link>
+                <Link href={countyHref(c.id)} className={link}>{c.name}, {c.stateAbbr}</Link>
               </li>
             ))}
           </ul>

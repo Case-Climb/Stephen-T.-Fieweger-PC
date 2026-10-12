@@ -11,7 +11,9 @@ const pages = [
   "/practice-areas/general-employment-law/", "/practice-areas/federal-sector-employment-law/",
   "/practice-areas/family-leave-medical-act/", "/practice-areas/wage-and-hour-disputes/",
   "/practice-areas/commercial-litigation/", "/practice-areas/family-law/",
-  "/service-areas/", "/davenport/", "/firm-profile/testimonials/", "/blog/", "/contact/",
+  "/service-areas/", "/service-areas/scott-county-ia/", "/service-areas/muscatine-county-ia/",
+  "/service-areas/clinton-county-ia/", "/service-areas/rock-island-county-il/", "/service-areas/henry-county-il/",
+  "/service-areas/mercer-county-il/", "/service-areas/whiteside-county-il/", "/davenport/", "/firm-profile/testimonials/", "/blog/", "/contact/",
   "/contact/disclaimer/", "/privacy-policy/", "/sitemap/",
 ];
 
@@ -88,7 +90,7 @@ for (const page of pages) {
     } catch (e) { fail(page, `invalid JSON-LD: ${e.message}`); }
   }
   if (page !== "/" && !types.includes("BreadcrumbList")) fail(page, "no BreadcrumbList schema");
-  if (page.startsWith("/practice-areas/") && page !== "/practice-areas/" && !types.includes("FAQPage")) fail(page, "no FAQPage schema");
+  if (/^\/(practice|service)-areas\/./.test(page) && !types.includes("FAQPage")) fail(page, "no FAQPage schema");
 
   for (const img of html.match(/<img\b[^>]*>/g) ?? []) {
     const alt = attr(img, "alt");
@@ -145,7 +147,7 @@ for (const p of ["/robots.txt", "/sitemap.xml"]) {
   if (p === "/sitemap.xml") {
     const xml = await res.text();
     const n = (xml.match(/<loc>/g) ?? []).length;
-    if (n < 19) fail(p, `only ${n} URLs`);
+    if (n < pages.length) fail(p, `only ${n} URLs for ${pages.length} pages`);
   }
 }
 

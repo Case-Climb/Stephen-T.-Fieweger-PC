@@ -69,7 +69,7 @@ General legal statements were written conservatively, but each one needs Mr. Fie
 
 ### Attorney Profile, Blog and Service Areas
 20. **Notable news (University of Iowa political discrimination matter)**: neutral description plus three links (WQAD 2012, *Chronicle of Higher Education* 2012, Eighth Circuit opinion 2014). The case is not described as a win or a loss. Approve the wording and links, or remove the section. Appears on Attorney Profile and in the Blog's "In the News" sidebar.
-21. **County seats and courthouse names** on Service Areas: Scott County Courthouse (Davenport), Muscatine County Courthouse (Muscatine), Clinton County Courthouse (Clinton), Rock Island County Justice Center (Rock Island), Henry County Courthouse (Cambridge), Mercer County Courthouse (Aledo), Whiteside County Courthouse (Morrison).
+21. **County seats and courthouse names** on each county page (sidebar and the "Where would a case be heard?" FAQ): Scott County Courthouse (Davenport), Muscatine County Courthouse (Muscatine), Clinton County Courthouse (Clinton), Rock Island County Justice Center (Rock Island), Henry County Courthouse (Cambridge), Mercer County Courthouse (Aledo), Whiteside County Courthouse (Morrison).
 22. Davenport Office: Scott County Courthouse in downtown Davenport, and the U.S. District Court for the Southern District of Iowa sitting in Davenport.
 23. Regional statements used in county and federal copy (unflagged; please confirm): many Quad Cities residents work at the Rock Island Arsenal; Muscatine County cases go to the Southern District of Iowa; Fulton, IL sits across the river from Clinton, IA.
 
@@ -86,6 +86,12 @@ General legal statements were written conservatively, but each one needs Mr. Fie
 - **Hero images** load with priority because they are the main above-the-fold content (better for LCP). All other images, the map and the YouTube video load lazily. The video loads nothing from YouTube until a visitor clicks play.
 
 ---
+
+## County pages (added after the original 19)
+
+Each of the 7 counties has its own page at `/service-areas/<county-id>/` (for example `/service-areas/scott-county-ia/`). The navbar has a Service Areas dropdown listing them, grouped by Iowa and Illinois, and the mobile menu lists them too. `/service-areas/` is now an overview with a card for each county. Each card keeps the old `#county-id` anchor, so older links still land on the right county.
+
+Each page includes the county's own copy, communities, county seat and courthouse (flagged for verification), the three most relevant practice areas plus links to the rest, four county-specific FAQs, links to the other counties in the same state, and a CTA. The hero banners are wide crops of the existing county images; no new images were generated.
 
 ## Typography
 
@@ -118,11 +124,11 @@ All other legacy URLs (practice areas, `/attorney-profile/`, `/contact/`, `/cont
 
 `npm run build && npm start`, then `npm run qa`. Result: **all checks passed.**
 
-- All 19 pages return 200. Each has exactly one H1, a unique title under 60 characters ending in "| Stephen T. Fieweger, P.C.", a unique meta description of 150–160 characters, a canonical URL, and Open Graph and Twitter tags.
-- JSON-LD parses on every page: BreadcrumbList on all inner pages; FAQPage on all 8 practice pages; LegalService/LocalBusiness on Home, Service Areas, Davenport and Contact; Person and Attorney on the Attorney Profile; ContactPage on Contact; WebSite and Organization on Home.
-- Every internal link and in-page anchor (`#awards`, `#video`, county anchors) resolves with no redirect hops. All 37 images load and have alt text.
+- All 26 pages (the original 19 plus 7 county pages) return 200. Each has exactly one H1, a unique title under 60 characters ending in "| Stephen T. Fieweger, P.C.", a unique meta description of 150–160 characters, a canonical URL, and Open Graph and Twitter tags.
+- JSON-LD parses on every page: BreadcrumbList on all inner pages; FAQPage on all 8 practice pages and all 7 county pages; a Service (linked to the firm) on each county page; LegalService/LocalBusiness on Home, Service Areas, Davenport and Contact; Person and Attorney on the Attorney Profile; ContactPage on Contact; WebSite and Organization on Home.
+- Every internal link and in-page anchor (`#awards`, `#video`) resolves with no redirect hops. All 44 images load and have alt text.
 - No banned advertising words (specialist, specializes, expert, best, top, guaranteed), apart from the medical and legal-standard uses noted above.
-- All legacy redirects return 301 to the correct target. `robots.txt` and `sitemap.xml` are served, and the sitemap lists all 19 URLs.
+- All legacy redirects return 301 to the correct target. `robots.txt` and `sitemap.xml` are served, and the sitemap lists all 26 URLs.
 - Playwright check at 375, 768 and 1280 px: no horizontal overflow on any page, no console errors. The header (logo, navigation and buttons) fits inside the page margins at every width from 320 to 1440 px. With reduced motion turned on, no content is left hidden.
 - Contact API: honeypot and too-fast submissions are silently dropped, invalid input returns 400, and production without SMTP returns 503 (expected until P10 is configured).
 

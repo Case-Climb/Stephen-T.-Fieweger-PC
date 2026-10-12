@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { firm } from "@/lib/site";
 import { practiceAreas, practiceHref } from "@/lib/practice-areas";
+import { counties, countyHref } from "@/lib/counties";
 import Icon from "./Icon";
 
 const about = [
@@ -18,7 +19,7 @@ export function Wordmark({ className = "" }: { className?: string }) {
     <span className={`flex items-center gap-2.5 sm:gap-3 ${className}`}>
       <Image src="/brand/logo-mark-gold.svg" alt="" width={44} height={44} className="h-8 w-8 shrink-0 max-[359px]:hidden sm:h-11 sm:w-11" priority />
       <span className="flex flex-col leading-none">
-        <span className="whitespace-nowrap text-[0.78rem] font-semibold tracking-[0.08em] sm:text-lg sm:tracking-[0.14em] lg:text-base lg:tracking-[0.1em] 2xl:text-lg">STEPHEN T. FIEWEGER</span>
+        <span className="whitespace-nowrap text-[0.78rem] font-semibold tracking-[0.08em] sm:text-lg sm:tracking-[0.14em] lg:text-base lg:tracking-[0.06em] 2xl:text-lg 2xl:tracking-[0.1em]">STEPHEN T. FIEWEGER</span>
         <span className="mt-1 flex items-center gap-2 text-[0.6rem] font-semibold tracking-[0.5em] text-gold sm:text-[0.65rem]">
           <span className="h-px w-6 bg-gold/70" aria-hidden />LAW<span className="h-px w-6 bg-gold/70" aria-hidden />
         </span>
@@ -27,7 +28,12 @@ export function Wordmark({ className = "" }: { className?: string }) {
   );
 }
 
-type MenuId = "about" | "practice" | null;
+type MenuId = "about" | "practice" | "areas" | null;
+
+const countyGroups = (["Iowa", "Illinois"] as const).map((state) => ({
+  state,
+  items: counties.filter((c) => c.state === state),
+}));
 
 export default function Header() {
   const pathname = usePathname();
@@ -76,7 +82,7 @@ export default function Header() {
   const isActive = (prefix: string) => pathname?.startsWith(prefix);
 
   const topLink =
-    "whitespace-nowrap rounded px-2 py-2 text-sm font-medium tracking-wide text-light/90 transition hover:text-gold xl:px-2.5";
+    "whitespace-nowrap rounded px-2 py-2 text-sm font-medium tracking-wide text-light/90 transition hover:text-gold";
 
   return (
     <header
@@ -156,7 +162,42 @@ export default function Header() {
                 </div>
               </div>
             </li>
-            <li><Link href="/service-areas/" className={`${topLink} ${isActive("/service-areas") ? "text-gold" : ""}`}>Service Areas</Link></li>
+            <li className="relative flex h-20 items-center" onMouseEnter={() => setOpen("areas")} onMouseLeave={() => setOpen(null)}>
+              <button
+                type="button"
+                className={`${topLink} inline-flex items-center gap-1 ${isActive("/service-areas") || isActive("/davenport") ? "text-gold" : ""}`}
+                aria-expanded={open === "areas"}
+                aria-controls="menu-areas"
+                onClick={() => setOpen(open === "areas" ? null : "areas")}
+              >
+                Service Areas <Icon name="chevron" className="h-4 w-4" />
+              </button>
+              <div id="menu-areas" hidden={open !== "areas"} className="absolute left-0 top-full w-[520px]">
+                <div className="card bg-navy p-5 shadow-2xl">
+                  <div className="grid grid-cols-2 gap-4">
+                    {countyGroups.map((g) => (
+                      <div key={g.state}>
+                        <p className="eyebrow px-3 pb-2">{g.state}</p>
+                        <ul className="space-y-0.5">
+                          {g.items.map((c) => (
+                            <li key={c.id}>
+                              <Link href={countyHref(c.id)} className="group block rounded-md px-3 py-2 hover:bg-white/5">
+                                <span className="block text-sm font-semibold text-light group-hover:text-gold">{c.name}</span>
+                                <span className="block truncate text-xs text-light/65">{c.towns.slice(0, 3).join(", ")}</span>
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 flex items-center justify-between gap-4 border-t border-white/10 px-3 pt-4 text-sm">
+                    <Link href="/service-areas/" className="font-semibold text-gold hover:underline">All service areas →</Link>
+                    <Link href="/davenport/" className="text-light/75 hover:text-gold">Davenport office</Link>
+                  </div>
+                </div>
+              </div>
+            </li>
             <li><Link href="/blog/" className={`${topLink} ${isActive("/blog") ? "text-gold" : ""}`}>Blog</Link></li>
             <li><Link href="/contact/" className={`${topLink} ${pathname === "/contact/" ? "text-gold" : ""}`}>Contact</Link></li>
           </ul>
@@ -205,9 +246,15 @@ export default function Header() {
               <li key={p.slug}><Link href={practiceHref(p.slug)} className="block py-2 text-lg">{p.title}</Link></li>
             ))}
           </ul>
-          <ul className="mb-8 space-y-1 border-t border-white/10 pt-4">
-            <li><Link href="/service-areas/" className="block py-2 text-lg">Service Areas</Link></li>
+          <p className="eyebrow mb-2">Service Areas</p>
+          <ul className="mb-6 space-y-1">
+            <li><Link href="/service-areas/" className="block py-2 text-lg">All Service Areas</Link></li>
+            {counties.map((c) => (
+              <li key={c.id}><Link href={countyHref(c.id)} className="block py-2 text-lg">{c.name}, {c.stateAbbr}</Link></li>
+            ))}
             <li><Link href="/davenport/" className="block py-2 text-lg">Davenport Office</Link></li>
+          </ul>
+          <ul className="mb-8 space-y-1 border-t border-white/10 pt-4">
             <li><Link href="/blog/" className="block py-2 text-lg">Blog</Link></li>
             <li><Link href="/contact/" className="block py-2 text-lg">Contact</Link></li>
           </ul>

@@ -38,5 +38,10 @@ for (const file of fs.readdirSync(src).filter((f) => f.endsWith(".png"))) {
     await sharp(input).resize(w, h, { fit: "cover" }).jpeg({ quality: 82 })
       .toFile(path.join(out, `${name}.jpg`));
   }
+  if (name.startsWith("county-")) {
+    // County pages use a wide crop of the same image as their hero banner.
+    await sharp(input).resize(HERO[0], HERO[1], { fit: "cover", position: "attention" })
+      .webp({ quality: 78 }).toFile(path.join(out, `${name}-hero.webp`));
+  }
   console.log("✓", name, `${w}x${h}`);
 }

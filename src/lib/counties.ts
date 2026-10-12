@@ -10,7 +10,12 @@ export type County = {
   imageAlt: string;
   copy: string[];
   related: string[]; // practice-area slugs
+  promise: string; // hero tagline on the county page
+  metaDescription: string;
 };
+
+export const countyHref = (id: string) => `/service-areas/${id}/`;
+export const getCounty = (id: string) => counties.find((c) => c.id === id);
 
 // County seats and courthouse names are listed for orientation only and are
 // flagged on the pre-launch checklist for verification before publishing.
@@ -30,6 +35,8 @@ export const counties: County[] = [
       "Whether you were hurt on Interstate 80, let go from a job in the Bettendorf business corridor, or are running a company with a contract dispute, you can meet with us in person, close to home. Scott County residents get the advantage of an attorney who has practiced in these courtrooms since 1987 and knows how local judges and juries tend to approach a case.",
     ],
     related: ["personal-injury", "general-employment-law", "commercial-litigation"],
+    promise: "Our office is here. Trial-tested representation for Davenport, Bettendorf and the rest of Scott County.",
+    metaDescription: "Davenport attorney serving Scott County, Iowa: Davenport, Bettendorf, Eldridge, Walcott and Le Claire. Injury, employment and business cases. Free consultation.",
   },
   {
     id: "muscatine-county-ia",
@@ -46,6 +53,8 @@ export const counties: County[] = [
       "We represent Muscatine County employees and employers alike, along with people injured in crashes on Highway 61 and Highway 38 or hurt on someone else's property. Cases filed here are typically heard at the county courthouse in Muscatine, and federal employment claims go to the Southern District of Iowa. Our Davenport office is about a 40-minute drive, and we can often handle early conversations by phone. If your matter is a fit, we will explain the process, the deadlines and your options before you commit to anything.",
     ],
     related: ["wage-and-hour-disputes", "family-leave-medical-act", "personal-injury"],
+    promise: "Representation for workers, families and businesses in Muscatine, Wilton and West Liberty.",
+    metaDescription: "Attorney serving Muscatine County, Iowa, including Muscatine, Wilton and West Liberty. Wage, FMLA, injury and employment cases. Call (563) 424-1982 today.",
   },
   {
     id: "clinton-county-ia",
@@ -62,6 +71,8 @@ export const counties: County[] = [
       "Stephen Fieweger represents Clinton County individuals, small businesses and non-profit organizations. County matters are generally heard at the courthouse in Clinton. Because Clinton sits directly across the river from Fulton and Whiteside County, Illinois, some disputes cross the state line. Being licensed in both Iowa and Illinois lets us handle those cases without handing you off to another firm. We will tell you early which state's law applies, which deadlines matter and what a realistic path forward looks like for your situation.",
     ],
     related: ["general-employment-law", "commercial-litigation", "personal-injury"],
+    promise: "Representation for individuals, small businesses and non-profits in Clinton, DeWitt and Camanche.",
+    metaDescription: "Attorney serving Clinton County, Iowa, including Clinton, DeWitt and Camanche. Employment, business and injury cases in Iowa and Illinois. Free consultation.",
   },
   {
     id: "rock-island-county-il",
@@ -78,6 +89,8 @@ export const counties: County[] = [
       "Illinois law differs from Iowa law in important ways, including deadlines, fault rules and employment statutes. Stephen Fieweger is licensed in Illinois, has argued before the Illinois Supreme Court, and practiced for more than 25 years at his father's Quad Cities firm. Rock Island County cases are typically heard in Rock Island, and our Davenport office is just across the river. For most clients, it is a shorter drive than crossing their own county.",
     ],
     related: ["federal-sector-employment-law", "general-employment-law", "personal-injury"],
+    promise: "Illinois-licensed counsel for Rock Island, Moline, East Moline, Milan and Silvis, just across the river.",
+    metaDescription: "Illinois-licensed attorney serving Rock Island County: Rock Island, Moline, East Moline, Milan and Silvis. Federal sector, employment and injury cases.",
   },
   {
     id: "henry-county-il",
@@ -94,6 +107,8 @@ export const counties: County[] = [
       "We help Henry County residents with personal injury claims, employment problems and business disputes under Illinois law. County matters are usually heard in Cambridge. Many clients prefer to start with a phone call to (563) 424-1982; if your matter is a fit, we will set a time to review your documents and explain how Illinois courts are likely to view your situation before you make any decisions. There is no charge for that first conversation.",
     ],
     related: ["personal-injury", "commercial-litigation", "wage-and-hour-disputes"],
+    promise: "Representation under Illinois law for Kewanee, Geneseo, Cambridge and the rest of Henry County.",
+    metaDescription: "Attorney serving Henry County, Illinois, including Kewanee, Geneseo and Cambridge. Personal injury, employment and business cases. Call (563) 424-1982.",
   },
   {
     id: "mercer-county-il",
@@ -110,6 +125,8 @@ export const counties: County[] = [
       "Small-town cases deserve the same preparation as big-city ones. We represent Mercer County residents in personal injury, employment and family matters, and we advise local businesses and non-profits on disputes before they grow. Cases in the county are typically heard in Aledo. Because many Mercer County families also have ties across the river in Iowa, it helps to work with an attorney licensed in both states who can explain how each state's rules apply. We return calls promptly and keep you informed.",
     ],
     related: ["personal-injury", "general-employment-law", "family-law"],
+    promise: "Careful, prepared representation for Aledo, Viola, Keithsburg and rural Mercer County.",
+    metaDescription: "Attorney serving Mercer County, Illinois, including Aledo, Viola and Keithsburg. Personal injury, employment and family law cases. Call (563) 424-1982.",
   },
   {
     id: "whiteside-county-il",
@@ -126,5 +143,7 @@ export const counties: County[] = [
       "We handle Whiteside County employment disputes, wage claims, injury cases and business litigation under Illinois law, for workers and employers alike. Local matters are generally heard at the courthouse in Morrison. Fulton sits directly across the river from Clinton, Iowa, so cross-border questions come up regularly. Stephen Fieweger is licensed in both states and has practiced in the region since 1987, so he can explain early on which state's rules apply and what that means for your case.",
     ],
     related: ["general-employment-law", "wage-and-hour-disputes", "commercial-litigation"],
+    promise: "Representation for workers and employers in Sterling, Rock Falls, Morrison and Fulton.",
+    metaDescription: "Attorney serving Whiteside County, Illinois, including Sterling, Rock Falls, Morrison and Fulton. Employment, wage, injury and business cases. Free consult.",
   },
 ];
