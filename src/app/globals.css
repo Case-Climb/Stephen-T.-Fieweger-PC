@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+  body {
+    @apply bg-navy-deep font-sans text-light antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 3px solid #C9A84C;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  [id] { scroll-margin-top: 6rem; }
+  ::selection { background: #C9A84C; color: #0B1426; }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-btn px-5 py-3 text-sm font-semibold tracking-wide transition-colors duration-200;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-navy hover:bg-gold-hover;
+  }
+  .btn-outline {
+    @apply btn border border-gold text-gold hover:bg-gold hover:text-navy;
+  }
+  .btn-outline-dark {
+    @apply btn border border-navy text-navy hover:bg-navy hover:text-light;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-gold;
+  }
+  .gold-rule {
+    @apply mt-5 block h-[3px] w-16 rounded-full bg-gold;
+  }
+  .card {
+    @apply rounded-lg border bg-navy-surface p-6 transition duration-300;
+    border-color: rgba(201, 168, 76, 0.25);
+  }
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-gold hover:shadow-[0_18px_40px_-20px_rgba(0,0,0,0.7)];
+  }
+  .card-light {
+    @apply rounded-lg border bg-white p-6 transition duration-300;
+    border-color: rgba(201, 168, 76, 0.35);
+  }
+  .section-dark {
+    @apply bg-navy text-light;
+  }
+  .section-deep {
+    @apply bg-navy-deep text-light;
+  }
+  .section-light {
+    @apply bg-cream text-ink;
+  }
+  .prose-site p { @apply mb-5 leading-relaxed; }
+  .prose-site p:last-child { @apply mb-0; }
+  .prose-site ul { @apply mb-5 space-y-2.5; }
+  .prose-site li { @apply relative pl-6 leading-relaxed; }
+  .prose-site li::before {
+    content: "";
+    @apply absolute left-0 top-[0.6em] h-2 w-2 rotate-45 bg-gold;
+  }
+  .prose-site h2 { @apply mb-4 mt-10 text-2xl sm:text-3xl; }
+  .prose-site h2:first-child { @apply mt-0; }
+  .prose-site h3 { @apply mb-3 mt-8 text-xl; }
+  .prose-site a { @apply font-medium underline decoration-gold decoration-2 underline-offset-4 hover:text-gold-hover; }
+  .field {
+    @apply w-full rounded-btn border border-white/15 bg-navy-deep/60 px-4 py-3 text-light placeholder:text-light/50 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40;
+  }
+  .field-light {
+    @apply w-full rounded-btn border border-navy/20 bg-white px-4 py-3 text-ink placeholder:text-ink/50 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/40;
+  }
+  /* Review flags: visible pre-launch markers for attorney review and missing details. */
+  .review-flag {
+    @apply mx-1 inline rounded bg-amber-300 px-1.5 py-0.5 align-baseline font-sans text-[0.72em] font-semibold not-italic text-black;
+  }
+}
