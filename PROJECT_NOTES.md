@@ -25,8 +25,8 @@ grep -rnoE "\[(ATTORNEY|PLACEHOLDER):[^]]*\]" src
 | P7 | **Social and profile URLs** (LinkedIn, Facebook, Google Business Profile) for `sameAs`. The old site linked LinkedIn, YouTube and Facebook. | `src/lib/site.ts` → `sameAs` |
 | P8 | **Logo approval.** The site uses Higgsfield-generated logo concept A (the "SF" monogram in a ring) next to the "STEPHEN T. FIEWEGER / LAW" text wordmark. Three other concepts are in `design/logo-concepts/`. The client must approve one, or supply their own logo, before launch. | `public/brand/`, `public/icon.svg`, `public/apple-touch-icon.png`, `Wordmark` in `src/components/Header.tsx` |
 | P9 | **GA4 measurement ID.** Placeholder `G-XXXXXXXXXX`. Set `NEXT_PUBLIC_GA4_ID`. GA loads only after a visitor accepts analytics cookies. | `.env`, `src/components/Consent.tsx`, comment in `<head>` |
-| P10 | **SMTP credentials** for form delivery to sfieweger@fiewegerlaw.com. Without them, the form returns "temporarily unavailable" in production. | `.env` (see `.env.example`) |
-| P11 | **Cloudflare Turnstile keys** (invisible bot protection). Optional but recommended; the honeypot and timing check work without them. | `.env` |
+| P10 | **SMTP credentials** for the blog newsletter signup, which is emailed to sfieweger@fiewegerlaw.com. Without them, signup returns "temporarily unavailable" in production. The contact form does not use this (see "Contact form and chat"). | `.env` |
+| P11 | **CaseClimb form and chat routing.** Confirm in CaseClimb that submissions from form `7XJiSoqhliANkGxiaMMc` and chat widget `6accff4423aff399a4b80c72` notify the attorney (sfieweger@fiewegerlaw.com and/or his phone). | CaseClimb account |
 | P12 | **Map pin.** Coordinates 41.573316, -90.513907 come from the U.S. Census geocoder for 5157 Utica Ridge Rd. Confirm against the Google Business Profile pin. | `src/lib/site.ts` → `geo` |
 | P13 | **Blog articles (phase two).** The four starter articles currently show a summary and outline only. They are `noindex` and left out of `sitemap.xml` until the full posts are written. | `src/lib/blog.ts`, `src/app/blog/[slug]/page.tsx` |
 
@@ -79,7 +79,7 @@ General legal statements were written conservatively, but each one needs Mr. Fie
 - **Family law page** added because the client lists family law as a service. The copy is informational and conservative (see item 16).
 - **Hours** are Mon–Fri 8:30 AM–5:00 PM from a third-party listing (see P1).
 - **"Firm Profile" content** was merged into the Attorney Profile, as specified. `/firm-profile/` redirects there with a 301. The Testimonials page stays at its legacy URL `/firm-profile/testimonials/`.
-- **Floating "Call Now" button** shows on mobile and tablet (below 1024px). On desktop the header already has a visible "Call (563) 424-1982" button.
+- **Floating "Call Now" button** shows on mobile and tablet (below 1024px), at the bottom-left so it does not collide with the chat bubble at the bottom-right. On desktop the header already has a visible "Call (563) 424-1982" button.
 - **Blog article URLs** (`/blog/<slug>/`) exist so the cards on the homepage and blog never link to a 404. Until phase two they are summary pages marked `noindex`.
 - **"Expert" usage.** The compliance rule bans describing the attorney as an "expert." The only uses of the word are the medical sense on the Medical Malpractice page ("medical expert's review") and "best interests of the child" (the legal custody standard) on Family Law. `npm run qa` enforces this.
 - **Testimonials.** Only the one verified Sandholm quote is used. There are no invented reviews, ratings, counts or case results anywhere.
@@ -92,6 +92,13 @@ General legal statements were written conservatively, but each one needs Mr. Fie
 Each of the 7 counties has its own page at `/service-areas/<county-id>/` (for example `/service-areas/scott-county-ia/`). The navbar has a Service Areas dropdown listing them, grouped by Iowa and Illinois, and the mobile menu lists them too. `/service-areas/` is now an overview with a card for each county. Each card keeps the old `#county-id` anchor, so older links still land on the right county.
 
 Each page includes the county's own copy, communities, county seat and courthouse (flagged for verification), the three most relevant practice areas plus links to the rest, four county-specific FAQs, links to the other counties in the same state, and a CTA. The hero banners are wide crops of the existing county images; no new images were generated.
+
+## Contact form and chat (CaseClimb)
+
+- **Contact form:** the site's own form was replaced everywhere (homepage, practice-page sidebars, Contact page) with the CaseClimb/LeadConnector form embed `7XJiSoqhliANkGxiaMMc` (`src/components/LeadForm.tsx`). Submissions go to CaseClimb, not through this site's server. The form has a transparent background and dark labels, so it always sits on a white panel. The "does not create an attorney-client relationship" notice stays under every form.
+- **Chat widget:** the LeadConnector chat widget `6accff4423aff399a4b80c72` loads on every page after the page has finished loading (`src/app/layout.tsx`).
+- **Compliance review `[ATTORNEY: verify]`:** the form and chat wording is set in CaseClimb, not in this codebase. The chat greeting currently says "Hey this is Steven, shoot me a quick text here (I respond in 2 minutes)", and the form says "Your message goes straight to my phone, I'll get back to you as soon as I'm available". Review these under the Iowa and Illinois advertising rules (a stated response time can read as a promise), and confirm the name the client wants used.
+- **Cookies:** both embeds are third-party and may set cookies regardless of the site's cookie banner choice. The form embed uses its own `data-cookie-consent` setting. The Privacy Policy now names CaseClimb/LeadConnector.
 
 ## Typography
 
@@ -130,7 +137,7 @@ All other legacy URLs (practice areas, `/attorney-profile/`, `/contact/`, `/cont
 - No banned advertising words (specialist, specializes, expert, best, top, guaranteed), apart from the medical and legal-standard uses noted above.
 - All legacy redirects return 301 to the correct target. `robots.txt` and `sitemap.xml` are served, and the sitemap lists all 26 URLs.
 - Playwright check at 375, 768 and 1280 px: no horizontal overflow on any page, no console errors. The header (logo, navigation and buttons) fits inside the page margins at every width from 320 to 1440 px. With reduced motion turned on, no content is left hidden.
-- Contact API: honeypot and too-fast submissions are silently dropped, invalid input returns 400, and production without SMTP returns 503 (expected until P10 is configured).
+- Contact form and chat: the CaseClimb form loads on the homepage, all 8 practice pages and the Contact page (4 fields and a "Send Text" button), and its embed script resizes it to fit. The chat widget loads on every page. No page errors. Newsletter API: honeypot and too-fast submissions are silently dropped, invalid input returns 400, and production without SMTP returns 503 (expected until P10 is configured).
 
 ## Deploying
 

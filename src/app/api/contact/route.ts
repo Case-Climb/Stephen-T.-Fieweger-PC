@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Handles the blog newsletter signup. The contact form is the embedded CaseClimb form (LeadForm.tsx).
+
 export const runtime = "nodejs";
 
 const TO = process.env.CONTACT_TO || "sfieweger@fiewegerlaw.com";
@@ -20,16 +22,6 @@ const str = (v: unknown, max = 200) => (typeof v === "string" ? v.trim().slice(0
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 
-async function verifyTurnstile(token: string, ip: string) {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true; // not configured: honeypot + timing still apply
-  if (!token) return false;
-  const body = new URLSearchParams({ secret, response: token, remoteip: ip });
-  const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", body });
-  const json = (await res.json().catch(() => ({}))) as { success?: boolean };
-  return Boolean(json.success);
-}
-
 export async function POST(req: Request) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   let data: Record<string, unknown>;
@@ -45,9 +37,6 @@ export async function POST(req: Request) {
   }
   if (limited(ip)) {
     return NextResponse.json({ ok: false, error: "Too many submissions." }, { status: 429 });
-  }
-  if (!(await verifyTurnstile(str(data.turnstileToken, 4096), ip))) {
-    return NextResponse.json({ ok: false, error: "Verification failed." }, { status: 400 });
   }
 
   const formType = data.formType === "newsletter" ? "newsletter" : "contact";

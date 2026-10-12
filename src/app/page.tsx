@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import BlogCard from "@/components/BlogCard";
-import ContactForm from "@/components/ContactForm";
+import LeadForm from "@/components/LeadForm";
 import Icon from "@/components/Icon";
 import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
@@ -293,7 +293,7 @@ export default function Home() {
             </ul>
           </Reveal>
           <Reveal delay={0.1} className="rounded-lg border border-gold/25 bg-navy p-6 sm:p-8">
-            <ContactForm source="Homepage" />
+            <LeadForm />
           </Reveal>
         </div>
       </section>

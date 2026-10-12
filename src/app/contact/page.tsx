@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ContactForm from "@/components/ContactForm";
+import LeadForm from "@/components/LeadForm";
 import Flagged from "@/components/Flagged";
 import Icon from "@/components/Icon";
 import JsonLd from "@/components/JsonLd";
@@ -54,7 +54,7 @@ export default function Contact() {
             <p className="mt-3 text-sm text-light/75">
               Please review our <Link href="/contact/disclaimer/" className="font-semibold text-gold underline">Disclaimer</Link> before submitting.
             </p>
-            <div className="mt-8"><ContactForm source="Contact page" /></div>
+            <div className="mt-8"><LeadForm lazy={false} /></div>
           </Reveal>
 
           <Reveal delay={0.08} className="space-y-6">

@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCall from "@/components/FloatingCall";
 import Consent from "@/components/Consent";
+import Script from "next/script";
 import { SITE_URL, firm } from "@/lib/site";
 import { OG_IMAGE } from "@/lib/seo";
 
@@ -47,6 +48,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <FloatingCall />
         <Consent />
+        {/* CaseClimb / LeadConnector chat widget */}
+        <Script
+          id="leadconnector-chat"
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6accff4423aff399a4b80c72"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );

@@ -26,9 +26,14 @@ export default function Privacy() {
       </p>
       <h2>Information you give us</h2>
       <p>
-        When you submit a contact or newsletter form, we collect what you enter: your name, email address, phone
-        number and message. We use it to respond to your inquiry, check for conflicts of interest and, if you ask,
-        send occasional legal updates. Form submissions are delivered by email to our office.
+        When you use our contact form or chat, or sign up for our newsletter, we collect what you enter, such as
+        your name, email address, phone number and message. We use it to respond to your inquiry, check for
+        conflicts of interest and, if you ask, send occasional legal updates.
+      </p>
+      <p>
+        Our contact form and chat are provided by CaseClimb, using the LeadConnector platform, which receives and
+        stores what you submit on our behalf and may use cookies to operate. Their handling of your information is
+        also governed by their own privacy terms.
       </p>
       <p>
         Please do not submit confidential information through this website. Submitting a form does not create an
@@ -48,8 +53,9 @@ export default function Privacy() {
         You can change your choice at any time: <CookieSettingsButton />.
       </p>
       <p>
-        Embedded content from other sites, such as Google Maps and YouTube, may set their own cookies when it loads
-        or when you interact with it. Our YouTube video does not load until you press play.
+        Embedded content from other sites, such as Google Maps, YouTube, and our contact form and chat
+        (CaseClimb/LeadConnector), may set their own cookies when it loads or when you interact with it. Our YouTube
+        video does not load until you press play.
       </p>
       <h2>How we share information</h2>
       <p>

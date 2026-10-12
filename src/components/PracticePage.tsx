@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { PracticeArea } from "@/lib/practice-areas";
 import { getPractice, practiceHref } from "@/lib/practice-areas";
 import { firm } from "@/lib/site";
-import ContactForm from "./ContactForm";
+import LeadForm from "./LeadForm";
 import CtaBand from "./CtaBand";
 import Faq from "./Faq";
 import Flagged from "./Flagged";
@@ -68,7 +68,7 @@ export default function PracticePage({ p }: { p: PracticeArea }) {
                 Or call <a href={firm.phoneHref} className="font-semibold text-gold hover:underline">{firm.phone}</a>
               </p>
               <div className="mt-6">
-                <ContactForm source={`${p.title} page`} compact />
+                <LeadForm />
               </div>
             </Reveal>
           </aside>
