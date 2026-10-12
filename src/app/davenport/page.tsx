@@ -77,7 +77,7 @@ export default function Davenport() {
 
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
             <Reveal className="rounded-lg bg-navy p-6 text-light sm:p-7">
-              <h2 className="font-serif text-2xl">Office details</h2>
+              <h2 className="text-2xl">Office details</h2>
               <ul className="mt-5 space-y-4 text-sm">
                 <li className="flex gap-3"><Icon name="pin" className="h-5 w-5 shrink-0 text-gold" /><span>{firm.legalName}<br />{firm.street}<br />{firm.city}, {firm.region} {firm.postalCode}</span></li>
                 <li className="flex gap-3"><Icon name="phone" className="h-5 w-5 shrink-0 text-gold" /><a href={firm.phoneHref} className="hover:text-gold">{firm.phone}</a></li>

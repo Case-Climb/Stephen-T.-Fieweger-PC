@@ -63,7 +63,7 @@ export default function PracticePage({ p }: { p: PracticeArea }) {
           <aside aria-label="Request a consultation" className="lg:sticky lg:top-28 lg:self-start">
             <Reveal delay={0.1} className="rounded-lg border border-gold/30 bg-navy p-6 text-light shadow-xl sm:p-7">
               <p className="eyebrow">Free Consultation</p>
-              <p className="mt-2 font-serif text-2xl">Tell us what happened.</p>
+              <p className="mt-2 text-2xl font-semibold">Tell us what happened.</p>
               <p className="mt-2 text-sm text-light/75">
                 Or call <a href={firm.phoneHref} className="font-semibold text-gold hover:underline">{firm.phone}</a>
               </p>
@@ -85,7 +85,7 @@ export default function PracticePage({ p }: { p: PracticeArea }) {
           <ol className="mt-10 grid gap-6 md:grid-cols-3">
             {p.process.map((s, i) => (
               <Reveal as="li" key={s.title} delay={i * 0.08} className="card relative h-full">
-                <span className="font-serif text-5xl text-gold/40" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-5xl font-semibold text-gold/40" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-3 text-xl">{s.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-light/75">{s.text}</p>
               </Reveal>

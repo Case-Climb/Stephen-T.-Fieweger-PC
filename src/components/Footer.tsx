@@ -19,7 +19,7 @@ const firmLinks = [
 ];
 
 export default function Footer() {
-  const heading = "mb-4 font-serif text-lg text-light";
+  const heading = "mb-4 text-lg font-semibold text-light";
   const link = "text-sm text-light/75 transition hover:text-gold";
   return (
     <footer className="border-t border-gold/20 bg-navy-deep text-light" aria-labelledby="footer-heading">

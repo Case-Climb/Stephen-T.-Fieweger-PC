@@ -50,7 +50,7 @@ export default function Contact() {
       <section className="section-light py-16 sm:py-24">
         <div className="container-site grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px]">
           <Reveal className="rounded-lg border border-gold/30 bg-navy p-6 text-light sm:p-10">
-            <h2 className="font-serif text-3xl">Send us a message</h2>
+            <h2 className="text-3xl">Send us a message</h2>
             <p className="mt-3 text-sm text-light/75">
               Please review our <Link href="/contact/disclaimer/" className="font-semibold text-gold underline">Disclaimer</Link> before submitting.
             </p>
@@ -59,7 +59,7 @@ export default function Contact() {
 
           <Reveal delay={0.08} className="space-y-6">
             <div className="rounded-lg border border-navy/10 bg-white p-6 text-ink sm:p-7">
-              <h2 className="font-serif text-2xl">Contact information</h2>
+              <h2 className="text-2xl">Contact information</h2>
               <ul className="mt-5 space-y-4 text-sm">
                 <li className="flex gap-3"><Icon name="phone" className="h-5 w-5 shrink-0 text-gold-dark" /><span><span className="block font-semibold">Phone</span><a href={firm.phoneHref} className="hover:text-gold-dark">{firm.phone}</a></span></li>
                 <li className="flex gap-3"><Icon name="fax" className="h-5 w-5 shrink-0 text-gold-dark" /><span><span className="block font-semibold">Fax</span>{firm.fax}</span></li>
@@ -90,7 +90,7 @@ export default function Contact() {
           <ol className="mt-10 grid gap-6 md:grid-cols-3">
             {next.map((s, i) => (
               <Reveal as="li" key={s.title} delay={i * 0.08} className="card h-full">
-                <span className="font-serif text-5xl text-gold/50" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
+                <span className="text-5xl font-semibold text-gold/50" aria-hidden>{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="mt-3 text-xl">{s.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-light/75">{s.text}</p>
               </Reveal>

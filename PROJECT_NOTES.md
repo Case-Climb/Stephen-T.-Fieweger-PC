@@ -17,7 +17,7 @@ grep -rnoE "\[(ATTORNEY|PLACEHOLDER):[^]]*\]" src
 | # | Item | Where it appears |
 |---|------|------------------|
 | P1 | **Office hours.** Using Mon–Fri 8:30 AM–5:00 PM from a third-party listing. Confirm. | `src/lib/site.ts` (`hours`, `openingHours`), footer, Contact, Davenport Office, LegalService schema |
-| P2 | **Attorney portrait.** Real photo from the client. Never use a generated portrait. | Homepage welcome card, Attorney Profile sidebar |
+| P2 | **Attorney portrait.** Real photo from the client. Never use a generated portrait. The portrait slots are hidden until a photo is added: put the file in `public/images/` and set `attorneyPortrait` in `src/lib/site.ts`, and it appears on both pages automatically. | Homepage welcome card, Attorney Profile sidebar |
 | P3 | **Bar numbers and court admissions** (federal district courts, 7th/8th Circuit, etc.). | Attorney Profile → Admissions; can also be added to the `Person` schema |
 | P4 | **Parking and directions** (cross street, entrance, suite number). | Davenport Office → Getting here |
 | P5 | **Real office photos** to replace the generated `davenport-hero` image. | Davenport Office hero (`public/images/davenport-hero.webp`) |
@@ -86,6 +86,10 @@ General legal statements were written conservatively, but each one needs Mr. Fie
 - **Hero images** load with priority because they are the main above-the-fold content (better for LCP). All other images, the map and the YouTube video load lazily. The video loads nothing from YouTube until a visitor clicks play.
 
 ---
+
+## Typography
+
+The whole site uses **Inter**, self-hosted through `next/font`. Headings are semibold with slightly tighter letter spacing. The original brief called for Playfair Display headings, but it was switched to Inter at the client's request.
 
 ## Imagery
 

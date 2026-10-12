@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import BlogCard from "@/components/BlogCard";
 import ContactForm from "@/components/ContactForm";
-import Flagged from "@/components/Flagged";
 import Icon from "@/components/Icon";
 import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
@@ -13,7 +12,7 @@ import { posts } from "@/lib/blog";
 import { counties } from "@/lib/counties";
 import { practiceAreas, practiceHref } from "@/lib/practice-areas";
 import { legalServiceSchema, organizationSchema, pageMeta, websiteSchema } from "@/lib/seo";
-import { firm, fullAddress } from "@/lib/site";
+import { attorneyPortrait, firm, fullAddress } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Davenport Attorney | Stephen T. Fieweger, P.C.",
@@ -59,7 +58,7 @@ export default function Home() {
         <ul className="container-site grid grid-cols-2 divide-gold/15 lg:grid-cols-4 lg:divide-x">
           {trust.map((t, i) => (
             <Reveal as="li" key={t.v} delay={i * 0.06} className="px-2 py-8 text-center sm:px-6">
-              <span className="block font-serif text-2xl text-gold sm:text-3xl" aria-hidden>{t.k}</span>
+              <span className="block text-2xl font-semibold tracking-tight text-gold sm:text-3xl" aria-hidden>{t.k}</span>
               <span className="mt-2 block text-sm leading-snug text-light/85">{t.v}</span>
             </Reveal>
           ))}
@@ -103,15 +102,14 @@ export default function Home() {
             </div>
             <div className="card relative -mt-24 ml-auto mr-4 max-w-sm bg-navy text-light shadow-2xl sm:mr-8">
               <div className="flex items-center gap-4">
-                <div className="flex h-20 w-16 shrink-0 items-center justify-center rounded border border-dashed border-gold/60 bg-navy-deep text-center text-[0.6rem] leading-tight text-light/60">
-                  Portrait<br />coming soon
-                </div>
+                {attorneyPortrait && (
+                  <Image src={attorneyPortrait} alt={`${firm.attorney}, Davenport attorney`} width={64} height={80} className="h-20 w-16 shrink-0 rounded object-cover" />
+                )}
                 <div>
-                  <p className="font-serif text-xl">{firm.attorney}</p>
+                  <p className="text-xl font-semibold">{firm.attorney}</p>
                   <p className="text-sm text-light/70">Attorney · Iowa & Illinois</p>
                 </div>
               </div>
-              <p className="mt-3 text-xs"><Flagged text="[PLACEHOLDER: attorney portrait, client upload]" /></p>
               <Link href="/attorney-profile/" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-gold hover:underline">
                 Meet Stephen <Icon name="arrow" className="h-4 w-4" />
               </Link>
@@ -155,7 +153,7 @@ export default function Home() {
           <ol className="mt-12 grid gap-6 md:grid-cols-3">
             {approach.map((a, i) => (
               <Reveal as="li" key={a.title} delay={i * 0.08} className="card-light h-full">
-                <span className="font-serif text-5xl text-gold" aria-hidden>{i + 1}</span>
+                <span className="text-5xl font-semibold text-gold" aria-hidden>{i + 1}</span>
                 <h3 className="mt-3 text-2xl">{a.title}</h3>
                 <p className="mt-3 leading-relaxed text-ink/80">{a.text}</p>
               </Reveal>

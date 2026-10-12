@@ -118,7 +118,7 @@ export default function ContactForm({
   if (status === "success") {
     return (
       <div role="status" className={`rounded-lg border border-gold/40 p-8 text-center ${tone === "dark" ? "bg-navy-surface" : "bg-white"}`}>
-        <p className="font-serif text-2xl">Thank you. We&rsquo;ll respond promptly.</p>
+        <p className="text-2xl font-semibold">Thank you. We&rsquo;ll respond promptly.</p>
         <p className={`mt-3 text-sm ${muted}`}>
           If your matter is urgent, call <a href={firm.phoneHref} className="font-semibold underline">{firm.phone}</a>.
         </p>
@@ -128,7 +128,7 @@ export default function ContactForm({
 
   return (
     <form onSubmit={onSubmit} aria-describedby={`${id}-note`} className="relative space-y-4">
-      {heading && <h3 className="mb-2 font-serif text-2xl">{heading}</h3>}
+      {heading && <h3 className="mb-2 text-2xl">{heading}</h3>}
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor={`${id}-first`} className={label}>First Name</label>

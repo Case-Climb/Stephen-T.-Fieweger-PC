@@ -24,7 +24,7 @@ export default function Newsletter() {
   }
 
   if (status === "done") {
-    return <p role="status" className="font-serif text-xl">Thank you. You&rsquo;re on the list.</p>;
+    return <p role="status" className="text-xl font-semibold">Thank you. You&rsquo;re on the list.</p>;
   }
 
   return (

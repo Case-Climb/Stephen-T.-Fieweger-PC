@@ -57,12 +57,12 @@ export default function Blog() {
 
             <aside className="space-y-8">
               <Reveal className="rounded-lg bg-navy p-6 text-light">
-                <h2 className="font-serif text-2xl">Newsletter</h2>
+                <h2 className="text-2xl">Newsletter</h2>
                 <p className="mt-2 text-sm text-light/80">Sign up for news about legal issues that affect you.</p>
                 <div className="mt-5"><Newsletter /></div>
               </Reveal>
               <Reveal delay={0.06} className="rounded-lg border border-navy/10 bg-white p-6">
-                <h2 className="font-serif text-2xl text-ink">In the News</h2>
+                <h2 className="text-2xl text-ink">In the News</h2>
                 <ul className="mt-4 space-y-4">
                   {inTheNews.map((n) => (
                     <li key={n.href}>

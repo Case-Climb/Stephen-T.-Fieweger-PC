@@ -18,7 +18,7 @@ export function Wordmark({ className = "" }: { className?: string }) {
     <span className={`flex items-center gap-2.5 sm:gap-3 ${className}`}>
       <Image src="/brand/logo-mark-gold.svg" alt="" width={44} height={44} className="h-8 w-8 shrink-0 max-[359px]:hidden sm:h-11 sm:w-11" priority />
       <span className="flex flex-col leading-none">
-        <span className="whitespace-nowrap font-serif text-[0.78rem] font-semibold tracking-[0.08em] sm:text-lg sm:tracking-[0.14em] lg:text-base lg:tracking-[0.1em] 2xl:text-lg">STEPHEN T. FIEWEGER</span>
+        <span className="whitespace-nowrap text-[0.78rem] font-semibold tracking-[0.08em] sm:text-lg sm:tracking-[0.14em] lg:text-base lg:tracking-[0.1em] 2xl:text-lg">STEPHEN T. FIEWEGER</span>
         <span className="mt-1 flex items-center gap-2 text-[0.6rem] font-semibold tracking-[0.5em] text-gold sm:text-[0.65rem]">
           <span className="h-px w-6 bg-gold/70" aria-hidden />LAW<span className="h-px w-6 bg-gold/70" aria-hidden />
         </span>

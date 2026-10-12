@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import CtaBand from "@/components/CtaBand";
 import Flagged from "@/components/Flagged";
@@ -10,7 +11,7 @@ import YouTube from "@/components/YouTube";
 import { inTheNews } from "@/lib/blog";
 import { practiceHref } from "@/lib/practice-areas";
 import { attorneySchema, attorneyServiceSchema, pageMeta } from "@/lib/seo";
-import { firm, fullAddress } from "@/lib/site";
+import { attorneyPortrait, firm, fullAddress } from "@/lib/site";
 
 export const metadata = pageMeta({
   title: "Davenport Lawyer Profile | Stephen T. Fieweger, P.C.",
@@ -54,16 +55,14 @@ export default function AttorneyProfile() {
       <section className="section-light py-16 sm:py-24">
         <div className="container-site grid gap-12 lg:grid-cols-[340px_minmax(0,1fr)]">
           <aside className="space-y-6 lg:sticky lg:top-28 lg:self-start">
-            <Reveal>
-              {/* Never generate a portrait: real photo supplied by the client. */}
-              <div className="flex aspect-[4/5] flex-col items-center justify-center rounded-lg border-2 border-dashed border-gold/60 bg-white p-6 text-center">
-                <Icon name="scale" className="h-12 w-12 text-gold-dark" />
-                <p className="mt-4 font-serif text-xl text-ink">{firm.attorney}</p>
-                <p className="mt-3 text-sm"><Flagged text="[PLACEHOLDER: attorney portrait, client upload]" /></p>
-              </div>
-            </Reveal>
+            {/* Real photo supplied by the client only; never a generated portrait. */}
+            {attorneyPortrait && (
+              <Reveal className="relative aspect-[4/5] overflow-hidden rounded-lg">
+                <Image src={attorneyPortrait} alt={`${firm.attorney}, Davenport, Iowa attorney`} fill sizes="340px" className="object-cover" priority />
+              </Reveal>
+            )}
             <Reveal delay={0.08} className="rounded-lg bg-navy p-6 text-light">
-              <p className="font-serif text-xl">Contact Stephen</p>
+              <p className="text-xl font-semibold">Contact Stephen</p>
               <ul className="mt-4 space-y-3 text-sm">
                 <li className="flex gap-3"><Icon name="phone" className="h-5 w-5 shrink-0 text-gold" /><a href={firm.phoneHref} className="hover:text-gold">{firm.phone}</a></li>
                 <li className="flex gap-3"><Icon name="fax" className="h-5 w-5 shrink-0 text-gold" /><span>Fax {firm.fax}</span></li>
@@ -170,7 +169,7 @@ export default function AttorneyProfile() {
               <li key={n.href}>
                 <a href={n.href} target="_blank" rel="noopener noreferrer" className="group flex items-start justify-between gap-4 p-5 hover:bg-cream">
                   <span>
-                    <span className="block font-serif text-lg text-ink group-hover:text-gold-dark">{n.title}</span>
+                    <span className="block text-lg font-semibold text-ink group-hover:text-gold-dark">{n.title}</span>
                     <span className="mt-1 block text-sm text-ink/65">{n.source} · {n.year}</span>
                   </span>
                   <Icon name="arrow" className="mt-1 h-5 w-5 shrink-0 -rotate-45 text-gold-dark" />

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,7 +9,6 @@ import { SITE_URL, firm } from "@/lib/site";
 import { OG_IMAGE } from "@/lib/seo";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -29,7 +28,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-US" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en-US" className={inter.variable}>
       <head>
         {/* GA4 placeholder. Set NEXT_PUBLIC_GA4_ID; GA4 loads only after cookie consent (see Consent.tsx). */}
         <noscript dangerouslySetInnerHTML={{ __html: "<!-- GA4: G-XXXXXXXXXX -->" }} />

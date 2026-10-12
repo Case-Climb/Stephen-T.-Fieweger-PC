@@ -54,7 +54,7 @@ export default function ServiceAreas() {
           </Reveal>
           <Reveal delay={0.08}>
             <nav aria-label="Counties on this page" className="rounded-lg bg-navy p-6 text-light">
-              <p className="font-serif text-xl">Jump to a county</p>
+              <p className="text-xl font-semibold">Jump to a county</p>
               <ul className="mt-4 space-y-2">
                 {counties.map((c) => (
                   <li key={c.id}>

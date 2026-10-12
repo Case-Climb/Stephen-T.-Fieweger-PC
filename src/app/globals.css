@@ -18,7 +18,7 @@
     @apply bg-navy-deep font-sans text-light antialiased;
   }
   h1, h2, h3, h4 {
-    @apply font-serif;
+    @apply font-semibold tracking-tight;
     text-wrap: balance;
   }
   :focus-visible {

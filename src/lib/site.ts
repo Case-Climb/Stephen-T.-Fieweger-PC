@@ -34,6 +34,11 @@ export const firm = {
     "https://www.google.com/maps/search/?api=1&query=5157+Utica+Ridge+Road+Davenport+IA+52807",
 } as const;
 
+// Real attorney photo (never a generated one). Leave null until the client supplies it;
+// the portrait slots on the homepage and Attorney Profile stay hidden until then.
+// Example: "/images/stephen-fieweger.webp" (portrait orientation, about 800x1000).
+export const attorneyPortrait: string | null = null;
+
 export const fullAddress = `${firm.street}, ${firm.city}, ${firm.region} ${firm.postalCode}`;
 
 export const testimonial = {

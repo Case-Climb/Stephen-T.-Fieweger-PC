@@ -106,7 +106,7 @@ export default function PracticeAreasHub() {
           <ol className="mt-12 grid gap-px overflow-hidden rounded-lg border border-gold/25 bg-gold/25 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
               <Reveal as="li" key={s.title} delay={i * 0.06} className="bg-navy-surface p-7">
-                <span className="font-serif text-4xl text-gold" aria-hidden>{i + 1}</span>
+                <span className="text-4xl font-semibold text-gold" aria-hidden>{i + 1}</span>
                 <h3 className="mt-3 text-xl">{s.title}</h3>
                 <p className="mt-2 text-sm text-light/75">{s.text}</p>
               </Reveal>
