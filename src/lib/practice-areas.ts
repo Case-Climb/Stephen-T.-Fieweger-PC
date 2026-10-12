@@ -13,6 +13,7 @@ export type PracticeArea = {
   promise: string;
   image: string;
   imageAlt: string;
+  cardAlt: string; // card image is /images/<slug>-card.webp
   icon: IconName;
   notice?: string;
   intro: string[];
@@ -38,6 +39,7 @@ export const practiceAreas: PracticeArea[] = [
     promise: "When someone else's carelessness hurts you, we investigate, build the evidence and push for a fair result in Iowa or Illinois.",
     image: "pi-hero",
     imageAlt: "Rain-slick two-lane road at dusk with tail-lights, representing car accident claims handled by a Davenport personal injury attorney",
+    cardAlt: "Crutches leaning against a bench by a rainy window, representing personal injury recovery in Davenport, Iowa",
     icon: "injury",
     intro: [
       "Personal injury law covers a wide range of situations: a driver who runs a red light on Kimberly Road, a store that leaves a spill on the floor, a neighbor's dog that bites a child. What these cases share is a simple question with a complicated answer. Did someone fail to act with reasonable care, and did that failure cause your injury?",
@@ -95,6 +97,7 @@ export const practiceAreas: PracticeArea[] = [
     promise: "We find out what actually happened in your care and whether a medical professional's mistake caused your harm.",
     image: "medmal-hero",
     imageAlt: "Quiet hospital corridor in soft light, representing Iowa and Illinois medical malpractice claims",
+    cardAlt: "Stethoscope on a medical file with an X-ray in the background, representing Iowa medical malpractice claims",
     icon: "medical",
     intro: [
       "Medicine is not perfect, and the law does not require it to be. A treatment can fail, a surgery can have complications and a patient can get worse even when every provider did their job well. That is why a mistake, or a bad result, is not automatically medical malpractice.",
@@ -151,6 +154,7 @@ export const practiceAreas: PracticeArea[] = [
     promise: "Whether you were wronged at work or you run the business, we give you a clear read on the law and a plan to act on it.",
     image: "employment-hero",
     imageAlt: "Empty modern office after hours, representing employment law matters in Davenport and the Quad Cities",
+    cardAlt: "Box of personal belongings on an office desk after a job loss, representing Davenport employment law",
     icon: "briefcase",
     intro: [
       "Employment law sits where people's livelihoods meet a dense web of state and federal rules. Stephen T. Fieweger has won or successfully resolved cases involving employment discrimination, wrongful termination and federal and state administrative agency employment issues. He represents both employees and employers, and that two-sided experience makes him better at each.",
@@ -211,6 +215,7 @@ export const practiceAreas: PracticeArea[] = [
     promise: "Federal workers face a different process and tighter deadlines. We help you use that process to protect your career.",
     image: "federal-hero",
     imageAlt: "Neoclassical government building with an American flag, representing federal sector employment law",
+    cardAlt: "Blank ID badge on a desk with an American flag behind it, representing federal employee discrimination claims",
     icon: "flag",
     intro: [
       "If you work for, or applied to work for, a federal agency, your discrimination claim follows a different path than a private-sector worker's. Federal employees generally must start with their agency's Equal Employment Opportunity (EEO) process, and the first deadline is measured in days, not months.",
@@ -268,6 +273,7 @@ export const practiceAreas: PracticeArea[] = [
     promise: "If you were denied protected leave, or punished for taking it, we help you enforce the rights the FMLA gives you.",
     image: "fmla-hero",
     imageAlt: "Kitchen table with calendar, coffee and reading glasses in morning light, representing family and medical leave",
+    cardAlt: "Newborn's hand holding an adult's finger, representing family and medical leave under the FMLA",
     icon: "family-leave",
     intro: [
       "The Family and Medical Leave Act of 1993 lets eligible employees take up to 12 weeks of unpaid, job-protected leave in a 12-month period to deal with serious health and family needs without losing their jobs. It is one of the most important workplace protections in federal law, and one of the most frequently misunderstood.",
@@ -329,6 +335,7 @@ export const practiceAreas: PracticeArea[] = [
     promise: "If you worked the hours, you should be paid for them. We help you recover what you are owed, or help your business stay compliant.",
     image: "wage-hero",
     imageAlt: "Vintage punch clock and stack of timesheets, representing wage and hour disputes in Davenport, Iowa",
+    cardAlt: "Wristwatch, calculator and pay envelope on a workbench, representing unpaid wage and overtime claims",
     icon: "clock",
     intro: [
       "Wage and hour cases have been rising for years. Part of the reason is that the rules are technical, and small mistakes in how a job is classified or how time is recorded can add up to thousands of dollars over months or years. Another part is that many workers never realize they have been shortchanged.",
@@ -388,6 +395,7 @@ export const practiceAreas: PracticeArea[] = [
     promise: "We resolve business disputes quickly and sensibly, in or out of court, while protecting what you have built.",
     image: "commercial-hero",
     imageAlt: "Boardroom table with contract documents and a fountain pen at dusk, representing commercial litigation in Davenport",
+    cardAlt: "Document binders and boxes on a conference table at dusk, representing commercial litigation in the Quad Cities",
     icon: "building",
     intro: [
       "Commercial litigation is legal action arising from business transactions: a supplier that did not deliver, a partner who put their own interests first, a customer that will not pay, a lease that went wrong. For a small or mid-sized company, one dispute can consume time, money and focus that should be going into the business.",
@@ -453,6 +461,7 @@ export const practiceAreas: PracticeArea[] = [
     promise: "Clear guidance through divorce, custody and support questions, so you can make careful decisions about your family's future.",
     image: "family-hero",
     imageAlt: "Adult holding a child's hand at golden hour, representing family law matters in Davenport, Iowa",
+    cardAlt: "Two wedding rings resting apart on a wooden table, representing divorce and family law in Iowa and Illinois",
     icon: "home",
     notice: "[ATTORNEY: confirm family law is offered and wording]",
     intro: [

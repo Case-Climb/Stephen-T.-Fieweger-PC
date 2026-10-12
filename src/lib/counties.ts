@@ -71,8 +71,8 @@ export const counties: County[] = [
     seat: "Rock Island",
     courthouse: "Rock Island County Justice Center, Rock Island",
     towns: ["Rock Island", "Moline", "East Moline", "Milan", "Silvis"],
-    image: "county-4",
-    imageAlt: "Bridge across the Mississippi River connecting Davenport, Iowa and Rock Island County, Illinois",
+    image: "county-5",
+    imageAlt: "Arched bridge over the Mississippi River at dusk, connecting the Quad Cities in Rock Island County, Illinois",
     copy: [
       "Rock Island County is the Illinois half of the Quad Cities: Rock Island, Moline, East Moline, Milan and Silvis. Thousands of residents work at the Rock Island Arsenal and other federal facilities, which makes federal-sector employment law especially relevant here. Discrimination, retaliation and EEO process questions for federal workers are a core part of what we do.",
       "Illinois law differs from Iowa law in important ways, including deadlines, fault rules and employment statutes. Stephen Fieweger is licensed in Illinois, has argued before the Illinois Supreme Court, and practiced for more than 25 years at his father's Quad Cities firm. Rock Island County cases are typically heard in Rock Island, and our Davenport office is just across the river. For most clients, it is a shorter drive than crossing their own county.",
@@ -87,8 +87,8 @@ export const counties: County[] = [
     seat: "Cambridge",
     courthouse: "Henry County Courthouse, Cambridge",
     towns: ["Kewanee", "Geneseo", "Cambridge"],
-    image: "county-2",
-    imageAlt: "Midwest farmland with a barn at golden hour in Henry County, Illinois",
+    image: "county-6",
+    imageAlt: "Interstate highway through cornfields at golden hour in Henry County, Illinois",
     copy: [
       "Henry County, Illinois, lies east of the Quad Cities along Interstate 80 and Interstate 74, with Kewanee, Geneseo and the county seat of Cambridge as its principal towns. Agriculture, manufacturing and small business drive the local economy, and highway traffic brings its share of serious crashes.",
       "We help Henry County residents with personal injury claims, employment problems and business disputes under Illinois law. County matters are usually heard in Cambridge. Many clients prefer to start with a phone call to (563) 424-1982; if your matter is a fit, we will set a time to review your documents and explain how Illinois courts are likely to view your situation before you make any decisions. There is no charge for that first conversation.",
@@ -119,8 +119,8 @@ export const counties: County[] = [
     seat: "Morrison",
     courthouse: "Whiteside County Courthouse, Morrison",
     towns: ["Sterling", "Rock Falls", "Morrison", "Fulton"],
-    image: "county-3",
-    imageAlt: "Historic main street at dusk in Whiteside County, Illinois",
+    image: "county-7",
+    imageAlt: "Rock River dam and riverside town at sunset in Whiteside County, Illinois",
     copy: [
       "Whiteside County runs from Fulton on the Mississippi east to the twin cities of Sterling and Rock Falls on the Rock River, with Morrison as the county seat. It is a region of manufacturers, distribution centers and family farms, along with a sizable public workforce.",
       "We handle Whiteside County employment disputes, wage claims, injury cases and business litigation under Illinois law, for workers and employers alike. Local matters are generally heard at the courthouse in Morrison. Fulton sits directly across the river from Clinton, Iowa, so cross-border questions come up regularly. Stephen Fieweger is licensed in both states and has practiced in the region since 1987, so he can explain early on which state's rules apply and what that means for your case.",

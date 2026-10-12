@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -14,10 +15,13 @@ const about = [
 
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
-    <span className={`flex flex-col leading-none ${className}`}>
-      <span className="font-serif text-[1.05rem] font-semibold tracking-[0.14em] sm:text-lg">STEPHEN T. FIEWEGER</span>
-      <span className="mt-1 flex items-center gap-2 text-[0.65rem] font-semibold tracking-[0.5em] text-gold">
-        <span className="h-px w-6 bg-gold/70" aria-hidden />LAW<span className="h-px w-6 bg-gold/70" aria-hidden />
+    <span className={`flex items-center gap-2.5 sm:gap-3 ${className}`}>
+      <Image src="/brand/logo-mark-gold.svg" alt="" width={44} height={44} className="h-8 w-8 shrink-0 max-[359px]:hidden sm:h-11 sm:w-11" priority />
+      <span className="flex flex-col leading-none">
+        <span className="whitespace-nowrap font-serif text-[0.78rem] font-semibold tracking-[0.08em] sm:text-lg sm:tracking-[0.14em] lg:text-base lg:tracking-[0.1em] 2xl:text-lg">STEPHEN T. FIEWEGER</span>
+        <span className="mt-1 flex items-center gap-2 text-[0.6rem] font-semibold tracking-[0.5em] text-gold sm:text-[0.65rem]">
+          <span className="h-px w-6 bg-gold/70" aria-hidden />LAW<span className="h-px w-6 bg-gold/70" aria-hidden />
+        </span>
       </span>
     </span>
   );
@@ -72,7 +76,7 @@ export default function Header() {
   const isActive = (prefix: string) => pathname?.startsWith(prefix);
 
   const topLink =
-    "whitespace-nowrap rounded px-2.5 py-2 text-sm font-medium tracking-wide text-light/90 transition hover:text-gold xl:px-3";
+    "whitespace-nowrap rounded px-2 py-2 text-sm font-medium tracking-wide text-light/90 transition hover:text-gold xl:px-2.5";
 
   return (
     <header
@@ -80,13 +84,13 @@ export default function Header() {
         solid ? "bg-navy/95 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)] backdrop-blur" : "bg-transparent"
       }`}
     >
-      <div className="container-site flex h-20 items-center justify-between gap-4">
+      <div className="container-site flex h-20 items-center justify-between gap-3">
         <Link href="/" className="shrink-0 text-light" aria-label={`${firm.legalName}, home`}>
           <Wordmark />
         </Link>
 
         <nav ref={navRef} aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-1">
+          <ul className="flex items-center gap-0.5">
             <li className="relative flex h-20 items-center" onMouseEnter={() => setOpen("about")} onMouseLeave={() => setOpen(null)}>
               <button
                 type="button"
@@ -166,12 +170,12 @@ export default function Header() {
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
-          <a href={firm.phoneHref} className="btn-gold px-3" aria-label={`Call ${firm.phone}`}>
+          <a href={firm.phoneHref} className="btn-gold px-2.5" aria-label={`Call ${firm.phone}`}>
             <Icon name="phone" className="h-5 w-5" />
           </a>
           <button
             type="button"
-            className="btn border border-white/20 px-3 text-light"
+            className="btn border border-white/20 px-2.5 text-light"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             aria-label={mobileOpen ? "Close menu" : "Open menu"}

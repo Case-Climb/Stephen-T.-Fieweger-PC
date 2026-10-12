@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   formatDetection: { telephone: true, email: true, address: true },
   openGraph: { siteName: firm.legalName, images: [OG_IMAGE], locale: "en_US", type: "website" },
   twitter: { card: "summary_large_image" },
-  icons: { icon: "/icon.svg" },
+  icons: { icon: "/icon.svg", apple: "/apple-touch-icon.png" },
 };
 
 export const viewport: Viewport = {

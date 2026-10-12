@@ -20,8 +20,8 @@ export const posts: Post[] = [
     title: "What to Do After a Car Accident in Iowa",
     category: "Personal Injury",
     excerpt: "The first days after a crash shape the claim that follows. A practical checklist for protecting your health, your evidence and your rights.",
-    image: "pi-hero-card",
-    imageAlt: "Wet road at dusk with tail-lights, illustrating what to do after a car accident in Iowa",
+    image: "blog-car-accident",
+    imageAlt: "Warning triangle on a road shoulder at dusk, illustrating what to do after a car accident in Iowa",
     practice: "personal-injury",
     outline: [
       "Get medical care, even if you feel fine",
@@ -37,8 +37,8 @@ export const posts: Post[] = [
     title: "Do I Have an FMLA Claim? Who Is Covered and for How Long",
     category: "Employment",
     excerpt: "Employer size, hours worked and the reason for leave all matter. How to tell whether the Family and Medical Leave Act protects you.",
-    image: "fmla-hero-card",
-    imageAlt: "Kitchen table with calendar and coffee, illustrating FMLA leave eligibility",
+    image: "blog-fmla",
+    imageAlt: "Hospital wristband and keys on a nightstand, illustrating FMLA leave eligibility",
     practice: "family-leave-medical-act",
     outline: [
       "Which employers the FMLA covers",
@@ -52,8 +52,8 @@ export const posts: Post[] = [
     title: "Unpaid Overtime: Are You Exempt or Hourly?",
     category: "Employment",
     excerpt: "A salary and a manager title do not automatically mean you lose overtime. What actually determines exempt status.",
-    image: "wage-hero-card",
-    imageAlt: "Vintage punch clock and timesheets, illustrating unpaid overtime and exempt status",
+    image: "blog-overtime",
+    imageAlt: "Office clock showing late evening over an empty desk, illustrating unpaid overtime and exempt status",
     practice: "wage-and-hour-disputes",
     outline: [
       "Why job duties matter more than job titles",
@@ -67,8 +67,8 @@ export const posts: Post[] = [
     title: "What Counts as Medical Malpractice in Iowa?",
     category: "Medical Malpractice",
     excerpt: "A bad outcome is not always negligence. The two things every malpractice claim must show, and why omissions count too.",
-    image: "medmal-hero-card",
-    imageAlt: "Hospital corridor in soft light, illustrating what counts as medical malpractice in Iowa",
+    image: "blog-medmal",
+    imageAlt: "Surgical instruments on a tray under operating-room lights, illustrating medical malpractice in Iowa",
     practice: "medical-malpractice",
     outline: [
       "A mistake, by act or omission, below the standard of care",

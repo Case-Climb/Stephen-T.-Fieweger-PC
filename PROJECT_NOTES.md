@@ -23,7 +23,7 @@ grep -rnoE "\[(ATTORNEY|PLACEHOLDER):[^]]*\]" src
 | P5 | **Real office photos** to replace the generated `davenport-hero` image. | Davenport Office hero (`public/images/davenport-hero.webp`) |
 | P6 | **Google reviews widget.** Embed once the Google Business Profile link is confirmed. | Testimonials page |
 | P7 | **Social and profile URLs** (LinkedIn, Facebook, Google Business Profile) for `sameAs`. The old site linked LinkedIn, YouTube and Facebook. | `src/lib/site.ts` → `sameAs` |
-| P8 | **Logo.** The site uses a text wordmark ("STEPHEN T. FIEWEGER / LAW") until the client uploads a logo. | `Wordmark` in `src/components/Header.tsx`; favicon `public/icon.svg` |
+| P8 | **Logo approval.** The site uses Higgsfield-generated logo concept A (the "SF" monogram in a ring) next to the "STEPHEN T. FIEWEGER / LAW" text wordmark. Three other concepts are in `design/logo-concepts/`. The client must approve one, or supply their own logo, before launch. | `public/brand/`, `public/icon.svg`, `public/apple-touch-icon.png`, `Wordmark` in `src/components/Header.tsx` |
 | P9 | **GA4 measurement ID.** Placeholder `G-XXXXXXXXXX`. Set `NEXT_PUBLIC_GA4_ID`. GA loads only after a visitor accepts analytics cookies. | `.env`, `src/components/Consent.tsx`, comment in `<head>` |
 | P10 | **SMTP credentials** for form delivery to sfieweger@fiewegerlaw.com. Without them, the form returns "temporarily unavailable" in production. | `.env` (see `.env.example`) |
 | P11 | **Cloudflare Turnstile keys** (invisible bot protection). Optional but recommended; the honeypot and timing check work without them. | `.env` |
@@ -89,9 +89,13 @@ General legal statements were written conservatively, but each one needs Mr. Fie
 
 ## Imagery
 
-All 22 images were generated with **Higgsfield** (GPT Image 2.5, using the global style prompt from the brief), then converted to WebP at the specified sizes by `scripts/process-images.mjs`. `og-default` is also exported as JPG for social platforms. Practice heroes have extra 800×500 `-card` crops for the practice and blog cards. No portraits, faces, logos or readable text were generated. No generated image is presented as a real client, case or the real office. The Davenport hero should be replaced with real office photos (P5).
+All site imagery was generated with **Higgsfield** and converted to WebP by `scripts/process-images.mjs`. No portraits, faces, logos or readable text were generated, and no generated image is presented as a real client, case or the real office. The Davenport hero should be replaced with real office photos (P5).
 
-Higgsfield credits used: about 23.75 (hero-home at high quality, the other 21 at medium quality, all at 2K resolution).
+- **Heroes and sections (22 images, GPT Image 2.5):** a page hero for every page, `home-welcome`, `county-1`…`county-4`, and `og-default` (also exported as JPG for social platforms).
+- **Card images (15 images, GPT Image 2.5):** one per practice-area card (`<slug>-card.webp`, used on the homepage grid and the practice-areas hub), one per blog card (`blog-*.webp`), and `county-5`…`county-7`, so each of the 7 counties now has its own image.
+- **Logo (Recraft V4.1, vector mode):** four concepts, delivered as true SVGs (`design/logo-concepts/logo-a.svg` … `logo-d.svg`). Concept A was cleaned up for the site: transparent background, the ring turned into a true cut-out, and the gold matched to #C9A84C. Files: `public/brand/logo-mark-gold.svg` (dark backgrounds), `public/brand/logo-mark-navy.svg` (light backgrounds), `public/brand/logo-512.png` (used as the schema logo), plus `public/icon.svg` and `public/apple-touch-icon.png` (letters only, since the thin ring disappears at favicon size). On screens narrower than 360 px the header shows the text wordmark only.
+
+Higgsfield credits used: about 48.75 in total (23.75 for the first image set, 15 for the card images, 10 for the logo concepts).
 
 ## Redirects (301), in `next.config.mjs`
 
@@ -112,10 +116,10 @@ All other legacy URLs (practice areas, `/attorney-profile/`, `/contact/`, `/cont
 
 - All 19 pages return 200. Each has exactly one H1, a unique title under 60 characters ending in "| Stephen T. Fieweger, P.C.", a unique meta description of 150–160 characters, a canonical URL, and Open Graph and Twitter tags.
 - JSON-LD parses on every page: BreadcrumbList on all inner pages; FAQPage on all 8 practice pages; LegalService/LocalBusiness on Home, Service Areas, Davenport and Contact; Person and Attorney on the Attorney Profile; ContactPage on Contact; WebSite and Organization on Home.
-- Every internal link and in-page anchor (`#awards`, `#video`, county anchors) resolves with no redirect hops. Every image loads and has alt text.
+- Every internal link and in-page anchor (`#awards`, `#video`, county anchors) resolves with no redirect hops. All 37 images load and have alt text.
 - No banned advertising words (specialist, specializes, expert, best, top, guaranteed), apart from the medical and legal-standard uses noted above.
 - All legacy redirects return 301 to the correct target. `robots.txt` and `sitemap.xml` are served, and the sitemap lists all 19 URLs.
-- Playwright check at 375, 768 and 1280 px: no horizontal overflow on any page, no console errors. With reduced motion turned on, no content is left hidden.
+- Playwright check at 375, 768 and 1280 px: no horizontal overflow on any page, no console errors. The header (logo, navigation and buttons) fits inside the page margins at every width from 320 to 1440 px. With reduced motion turned on, no content is left hidden.
 - Contact API: honeypot and too-fast submissions are silently dropped, invalid input returns 400, and production without SMTP returns 503 (expected until P10 is configured).
 
 ## Deploying
