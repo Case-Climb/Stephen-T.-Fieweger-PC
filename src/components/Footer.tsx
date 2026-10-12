@@ -92,7 +92,7 @@ export default function Footer() {
             attorney-client relationship. Prior results do not guarantee a similar outcome. See our{" "}
             <Link href="/contact/disclaimer/" className="underline hover:text-gold">Disclaimer</Link>.
           </p>
-          <p>© 2026 {firm.legalName}. All rights reserved. Responsible attorney: {firm.attorney}, {fullAddress}.</p>
+          <p>© 2026 {firm.legalName} All rights reserved. Responsible attorney: {firm.attorney}, {fullAddress}.</p>
         </div>
       </div>
     </footer>

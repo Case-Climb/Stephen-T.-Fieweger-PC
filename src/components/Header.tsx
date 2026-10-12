@@ -17,7 +17,7 @@ const about = [
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <span className={`flex items-center gap-2.5 sm:gap-3 ${className}`}>
-      <Image src="/brand/logo-mark-gold.svg" alt="" width={44} height={44} className="h-8 w-8 shrink-0 max-[359px]:hidden sm:h-11 sm:w-11" priority />
+      <Image src="/brand/logo-mark.svg" alt="" width={44} height={45} className="h-8 w-8 shrink-0 max-[359px]:hidden sm:h-11 sm:w-11" priority />
       <span className="flex flex-col leading-none">
         <span className="whitespace-nowrap text-[0.78rem] font-semibold tracking-[0.08em] sm:text-lg sm:tracking-[0.14em] lg:text-base lg:tracking-[0.06em] 2xl:text-lg 2xl:tracking-[0.1em]">STEPHEN T. FIEWEGER</span>
         <span className="mt-1 flex items-center gap-2 text-[0.6rem] font-semibold tracking-[0.5em] text-gold sm:text-[0.65rem]">
